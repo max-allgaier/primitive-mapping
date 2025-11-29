@@ -1,7 +1,5 @@
-package me.maxallgaier.primitivemapping.impl;
+package me.maxallgaier.primitivemapping;
 
-import me.maxallgaier.primitivemapping.PrimitiveBoolean;
-import me.maxallgaier.primitivemapping.PrimitiveList;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

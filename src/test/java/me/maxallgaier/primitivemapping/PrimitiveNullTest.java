@@ -1,14 +1,13 @@
-package me.maxallgaier.primitivemapping.impl;
+package me.maxallgaier.primitivemapping;
 
-import me.maxallgaier.primitivemapping.PrimitiveBoolean;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PrimitiveBooleanTest {
+class PrimitiveNullTest {
     @Test
     void metadataStoresData_addMetadataReturnsItself_hasMetadataWorks() {
-        PrimitiveBoolean primitive = PrimitiveBoolean.of(true);
+        PrimitiveNull primitive = PrimitiveNull.create();
         Object randomData = new Object();
         primitive.addMetadata(randomData);
 
@@ -19,26 +18,24 @@ class PrimitiveBooleanTest {
 
     @Test
     void throwsUnsupportedOperationForImproperAsMethodUse_isMethodWorks() {
-        PrimitiveBoolean primitive = PrimitiveBoolean.of(true);
+        PrimitiveNull primitive = PrimitiveNull.create();
 
-        assertSame(primitive.asBoolean(), primitive);
+        assertSame(primitive.asNull(), primitive);
         assertThrowsExactly(UnsupportedOperationException.class, primitive::asMap);
         assertThrowsExactly(UnsupportedOperationException.class, primitive::asList);
         assertThrowsExactly(UnsupportedOperationException.class, primitive::asNumber);
         assertThrowsExactly(UnsupportedOperationException.class, primitive::asString);
-        assertThrowsExactly(UnsupportedOperationException.class, primitive::asNull);
-        assertTrue(primitive.isBoolean());
+        assertThrowsExactly(UnsupportedOperationException.class, primitive::asBoolean);
+        assertTrue(primitive.isNull());
         assertFalse(primitive.isMap());
         assertFalse(primitive.isList());
         assertFalse(primitive.isNumber());
         assertFalse(primitive.isString());
-        assertFalse(primitive.isNull());
+        assertFalse(primitive.isBoolean());
     }
 
     @Test
-    void staticOfWorks_createsNewObjectNotReference_valueMethodWorks() {
-        assertTrue(PrimitiveBoolean.of(true).value());
-        assertFalse(PrimitiveBoolean.of(false).value());
-        assertNotSame(PrimitiveBoolean.of(true), PrimitiveBoolean.of(true));
+    void staticCreateWorks_doesNotReturnReference() {
+        assertNotSame(PrimitiveNull.create(), PrimitiveNull.create());
     }
 }

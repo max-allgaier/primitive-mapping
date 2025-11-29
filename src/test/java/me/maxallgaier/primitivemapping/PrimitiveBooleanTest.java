@@ -1,14 +1,13 @@
-package me.maxallgaier.primitivemapping.impl;
+package me.maxallgaier.primitivemapping;
 
-import me.maxallgaier.primitivemapping.PrimitiveNull;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PrimitiveNullTest {
+class PrimitiveBooleanTest {
     @Test
     void metadataStoresData_addMetadataReturnsItself_hasMetadataWorks() {
-        PrimitiveNull primitive = PrimitiveNull.create();
+        PrimitiveBoolean primitive = PrimitiveBoolean.of(true);
         Object randomData = new Object();
         primitive.addMetadata(randomData);
 
@@ -19,24 +18,26 @@ class PrimitiveNullTest {
 
     @Test
     void throwsUnsupportedOperationForImproperAsMethodUse_isMethodWorks() {
-        PrimitiveNull primitive = PrimitiveNull.create();
+        PrimitiveBoolean primitive = PrimitiveBoolean.of(true);
 
-        assertSame(primitive.asNull(), primitive);
+        assertSame(primitive.asBoolean(), primitive);
         assertThrowsExactly(UnsupportedOperationException.class, primitive::asMap);
         assertThrowsExactly(UnsupportedOperationException.class, primitive::asList);
         assertThrowsExactly(UnsupportedOperationException.class, primitive::asNumber);
         assertThrowsExactly(UnsupportedOperationException.class, primitive::asString);
-        assertThrowsExactly(UnsupportedOperationException.class, primitive::asBoolean);
-        assertTrue(primitive.isNull());
+        assertThrowsExactly(UnsupportedOperationException.class, primitive::asNull);
+        assertTrue(primitive.isBoolean());
         assertFalse(primitive.isMap());
         assertFalse(primitive.isList());
         assertFalse(primitive.isNumber());
         assertFalse(primitive.isString());
-        assertFalse(primitive.isBoolean());
+        assertFalse(primitive.isNull());
     }
 
     @Test
-    void staticCreateWorks_doesNotReturnReference() {
-        assertNotSame(PrimitiveNull.create(), PrimitiveNull.create());
+    void staticOfWorks_createsNewObjectNotReference_valueMethodWorks() {
+        assertTrue(PrimitiveBoolean.of(true).value());
+        assertFalse(PrimitiveBoolean.of(false).value());
+        assertNotSame(PrimitiveBoolean.of(true), PrimitiveBoolean.of(true));
     }
 }

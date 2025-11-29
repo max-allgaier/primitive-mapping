@@ -28,11 +28,11 @@ This library can represent the data without having a specific format.
 For example, the code below also represents the data above.
 ```java
 PrimitiveMap primitiveMap = PrimitiveMap.createSynchronized()
-    .put("name", PrimitiveString.of("Max"))
-    .put("age", PrimitiveNumber.ofInt(100))
+    .put("name", "Max")
+    .put("age", 100)
     .put("shirt", PrimitiveMap.createSynchronized()
-        .put("size", PrimitiveString.of("xl"))
-        .putWithMetadata("color", PrimitiveString.of("blue"), new Comment("This is a comment"), new OtherMetadata())
+        .put("size", "xl")
+        .putWithMetadata("color", "blue", new Comment("This is a comment"), new OtherMetadata())
     );
 ```
 The classes Comment and OtherMetadata are custom classes to show that anyone can create and assign metadata. 

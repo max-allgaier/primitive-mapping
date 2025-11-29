@@ -24,8 +24,20 @@ public final class PrimitiveMap extends AbstractPrimitiveElement<PrimitiveMap> {
         return this.internalMap.get(key);
     }
 
+    public PrimitiveMap put(String key, int value) {
+        return this.put(key, PrimitiveNumber.ofInt(value));
+    }
+
+    public PrimitiveMap put(String key, String value) {
+        return this.put(key, PrimitiveString.of(value));
+    }
+
     public PrimitiveMap put(String key, PrimitiveElement value) {
         return this.putWithMetadata(key, value, (Object[]) null);
+    }
+
+    public PrimitiveMap putWithMetadata(String key, String value, Object... metadatas) {
+        return this.putWithMetadata(key, PrimitiveString.of(value), metadatas);
     }
 
     public PrimitiveMap putWithMetadata(String key, PrimitiveElement value, Object... metadatas) {
@@ -35,7 +47,6 @@ public final class PrimitiveMap extends AbstractPrimitiveElement<PrimitiveMap> {
                 primitiveKey.addMetadata(metadata);
             }
         }
-
         this.internalMap.put(primitiveKey, value);
         return this;
     }
