@@ -1,6 +1,9 @@
 # primitive-mapping
 A simple library that abstracts basic key value structures like JSON and YAML.
 
+## Requirements
+Java 8+
+
 ## Example Application
 Take the following files below:
 
