@@ -34,7 +34,5 @@ PrimitiveMap primitiveMap = PrimitiveMap.createSynchronized()
         .put("size", PrimitiveString.of("xl"))
         .putWithMetadata("color", PrimitiveString.of("blue"), new Comment("This is a comment"), new OtherMetadata())
     );
-// Comment is a custom class, but it is deemed as metadata.
-// OtherMetadata can also be a custom class and is used to display how to add additional metadata.
 ```
 The classes Comment and OtherMetadata are custom classes to show that anyone can create and assign metadata. 
